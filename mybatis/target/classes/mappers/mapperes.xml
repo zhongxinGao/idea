@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--高级查询-->
+<mapper namespace="mapperes">
+    <resultMap id="listmap" type="com.bean.User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <collection property="list" ofType="com.bean.Information" >
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+            <result property="age" column="age"/>
+        </collection>
+    </resultMap>
+    <select id="listusers"  resultMap="listmap">
+        SELECT  * FROM user a left join information b ON a.id = b.u_id;
+    </select>
+    <select id="listselect" resultType="com.bean.User">
+        select * from user
+    </select>
+</mapper>

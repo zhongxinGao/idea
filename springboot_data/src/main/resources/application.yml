@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    ###会员数据库
+    member:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/member?characterEncoding=UTF-8
+      username: root
+      password: 131516
+      driver-class-name: com.mysql.jdbc.Driver
+    ###订单数据库
+    order:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/member?characterEncoding=UTF-8
+      username: root
+      password: 131516
+      driver-class-name: com.mysql.jdbc.Driver

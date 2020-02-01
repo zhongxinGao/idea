@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                       http://www.springframework.org/schema/context
+                       http://www.springframework.org/schema/context/spring-context.xsd
+                       http://www.springframework.org/schema/mvc
+                       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- Spring 来扫描指定包下的类，并注册被@Component，@Controller，@Service，@Repository等注解标记的组件 -->
+    <context:component-scan base-package="com.*"/>
+
+    <!-- 开启Spring MVC 注解配置的支持 -->
+    <mvc:annotation-driven />
+
+
+    <!-- 配置视图解析器,设置前缀和后缀，自动拼接 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--文件上传-->
+    <bean id="commonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--默认编码-->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 设置文件上传最大大小 10M -->
+        <property name="maxUploadSize" value="10485760" />
+        <!-- 启用是为了推迟文件解析，以便捕获文件大小异常 -->
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+    <!-- 处理静态资源 -->
+    <mvc:resources mapping = "/static/**" location = "/static/" />
+
+    <!--解决拦截静态资源问题 将springmvc不能处理的请求交给tomcat-->
+    <mvc:default-servlet-handler/>
+
+</beans>

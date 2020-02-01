@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--扫包-->
+    <context:component-scan base-package="com.gao.bean"/>
+    <!--开启注解-->
+
+    <!--set、get注入-->
+    <bean id="person" class="com.gao.bean.Person">
+        <property name="name" value="高中鑫"/>
+        <property name="address" value="会理"/>
+    </bean>
+    <!--构造方法注入bean的属性值-->
+    <bean id="teacher" class="com.gao.bean.Teacher">
+        <constructor-arg value="java"/>
+        <constructor-arg value="20"/>
+    </bean>
+    <!--属性文件值注入-->
+    <bean id="data" class="com.gao.bean.Data">
+        <property name="properties">
+            <props>
+                <prop key="driverClassName">com.mysql.jdbc.driver</prop>
+                <prop key="url">jdbc.mysql://localhost:3306/student/characterEncoding=utf8</prop>
+                <prop key="username">root</prop>
+                <prop key="password">131516</prop>
+            </props>
+        </property>
+    </bean>
+    <!--集合注入-->
+    <bean id="collection" class="com.gao.bean.Collection">
+        <!--数组-->
+        <property name="arrs">
+            <array>
+                <value>数字一</value>
+                <value>数字二</value>
+                <value>数字三</value>
+            </array>
+        </property>
+        <!--List集合-->
+        <property name="lists">
+            <list>
+                <value>呵呵呵</value>
+                <value>喝喝喝</value>
+            </list>
+        </property>
+        <!--Set集合-->
+        <property name="sets">
+            <set>
+                <value>我命由我</value>
+                <value>不由天</value>
+            </set>
+        </property>
+        <!--Map集合-->
+        <property name="maps">
+            <map>
+                <entry key="hello" value="world"/>
+            </map>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper接口查询-->
+<!--这里必须是接口的全路径名-->
+<mapper namespace="com.mapper.AnimalMapper">
+    <select id="animalAll" resultMap="com.bean.Animal">
+        select * from animal
+    </select>
+</mapper>
